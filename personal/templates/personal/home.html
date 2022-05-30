@@ -3,17 +3,17 @@
 
 {% block content %}
 
-<div style="border: 2px solid #000;">
+
     <h1>This is the body</h1>
     <p>This is the part of the code that changes</p>
     <p>{{somekeystring}} {{some_number}}<p>
 {# doig loops in django template #}
 <ul>
-    {% for question in questions %}
-    <li>{% include "personal/snippets/body_snippets.html" with value=question %}</li>
+    {% for account in accounts %}
+    <li>{% include "personal/snippets/body_snippets.html" with value=account %}</li>
     {% endfor%}
 </ul>
 
-</div>
+
 
 {% endblock content %}
