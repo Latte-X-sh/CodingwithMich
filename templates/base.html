@@ -1,19 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <title>This is the header</title>
-    <div style ="border: 2px solid #000;">
-        <h1>This is the header</h1>
-    </div>
+  <head>
+    <title>Blog | </title>
+    {% include 'snippets/header.html' %}
 </head>
 <body>
-    {% block content %}
+    <!-- Main body-->
+    <style type="text/css">
+        .main{
+            min-height: 100vh;
+            height:100%
+        }
+    </style>
+    <div class="main">
+        {% block content %}
 
-    {% endblock content %}
-</body>
-<footer>
-    <div style="border: 2px solid #000;">
-        <h3>This is the footer</h3>
+        {% endblock content %}
     </div>
-</footer>
+   <!-- End body-->
+    {% include 'snippets/footer.html' %}
+
+</body>
+
 </html>

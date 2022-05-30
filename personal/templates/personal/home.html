@@ -2,18 +2,21 @@
 
 
 {% block content %}
-
-<div style="border: 2px solid #000;">
-    <h1>This is the body</h1>
-    <p>This is the part of the code that changes</p>
-    <p>{{somekeystring}} {{some_number}}<p>
-{# doig loops in django template #}
-<ul>
-    {% for question in questions %}
-    <li>{% include "personal/snippets/body_snippets.html" with value=question %}</li>
-    {% endfor%}
-</ul>
-
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">CodingWithLatte</h1>
+    <p class="fs-5 text-muted">"You lose one and win some"</p>
+  </div>
+<div class="container">
+    <div class="d-flex flex-column">
+   
+        <h1>Registered Users</h1>
+        {# doig loops in django template #}
+        <ul>
+            {% for account in accounts %}
+            <li>{% include "personal/snippets/body_snippets.html" with value=account %}</li>
+            {% endfor%}
+        </ul>
+    </div>
 </div>
 
 {% endblock content %}
