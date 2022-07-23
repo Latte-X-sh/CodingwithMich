@@ -32,11 +32,6 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
-
-
-
-
 # creating a user model
 class Account(AbstractBaseUser):
     email =  models.EmailField(verbose_name="Email", max_length=60, unique=True)
