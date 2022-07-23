@@ -2,33 +2,35 @@
 
 
 {% block content %}
-
-
-<h2>Login</h2>
+<div class="container py-5 px-5 mx-auto">
 <form method="post">{% csrf_token %}
+	<h1 class="h3 mb-3 fw-normal">Login </h1>
+	{% for field in loginform %}
+	<p>
+		{% for error in field.errors %}
+		<p class="mx-auto" style="color:red">{{ error }}</p>
+		{% endfor %}
+	</p>
+	{% endfor %}
+	{% if loginform.non_field_errors %}
+		<div style="color:red">
+			<p class="mx-auto">{{loginform.non_field_errors}}</p>
+		</div>
+	{% endif %}
 
-	<small style="color: grey;">{{loginform.help_text}}</small>
-	<div class="form-floating">
-		{% if loginform.email.errors %}
-			<ol>
-			{% for error in loginform.email.errors %}
-				<li><strong>{{ error|escape }}</strong></li>
-			{% endfor %}
-			</ol>
-		{% endif %}
-		<label for="{{loginform.email.id_for_label}}">Email address</label>
-		{{loginform.email}}
-	</div>
-	<div class="form-floating">
-
-		<p style="color: red;">{{ logiform.password.errors }}</p>
-		<label for="{{loginform.password.id_for_label}}">Password</label>
-		{{loginform.password}}
-	</div>
-
-	<button type="submit">Login</button>
+	<div class="form-floating py-2 ">
+		<input type="email" name="email" class="form-control" id="{{loginform.email.id_for_label}}" >
+		<label for="floatingInput">Email address</label>
+	  </div>
+	<div class="form-floating py-2 ">
+		<input type="password" name="password" class="form-control" id="{{loginform.password.id_for_label}}">
 	
-</form>
+		<label for="floatingInput">Password</label>
+	</div>
 
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+
+  </form>
+</div>
 
 {% endblock content %}

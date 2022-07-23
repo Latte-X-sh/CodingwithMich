@@ -41,7 +41,7 @@ def login_view(request):
             if user:
                 login(request, user)
                 return redirect("home")
-
+     
     else:
         form = AccountAuthenticationForm()
 
@@ -58,6 +58,10 @@ def account_view(request):
         form = AccountUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+<<<<<<< HEAD
+=======
+            return redirect('account')
+>>>>>>> bc4be82a30bca117a5ff1dd9256b710cfa186f67
     else:
         form = AccountUpdateForm(
             initial={
