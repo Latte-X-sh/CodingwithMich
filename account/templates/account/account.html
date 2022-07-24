@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-
+{% block title %} Account {% endblock %}
 {% block content %}
 <div class="container py-5 px-5 mx-auto">
 	<form method="post">{% csrf_token %}
@@ -12,12 +12,13 @@
 			{% endfor %}
 		</p>
 		{% endfor %}
+		
 		{% if account_form.non_field_errors %}
 			<div style="color:red">
 				<p class="mx-auto">{{account_form.non_field_errors}}</p>
 			</div>
 		{% endif %}
-	
+
 		<div class="form-floating py-2 ">
 			<input type="email" name="email" required autofocus value={{account_form.initial.email}} class="form-control" id="{{account_form.email.id_for_label}}" >
 			<label for="floatingInput">Email address</label>
@@ -27,7 +28,11 @@
 		
 			<label for="floatingInput">Username</label>
 		</div>
-	
+		{% if success_message%}
+		<div style="color:green" id='update'>
+			<p class="mx-auto">{{success_message}}</p>
+		</div>
+		{% endif %}
 		<button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
 	
 	  </form>

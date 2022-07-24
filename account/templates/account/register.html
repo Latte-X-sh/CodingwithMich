@@ -1,27 +1,55 @@
 {% extends 'base.html' %}
 
-
+{% block title %} Register {% endblock %}
 {% block content %}
 
-<h2>Register</h2>
+<div class="container py-5 px-5 mx-auto">
 <form method="post">{% csrf_token %}
+	<h1 class="h3 mb-3 fw-normal">Register </h1>
+
+	<div class="form-floating py-2 ">
+		<input type="email" name="email" class="form-control" id="{{registration_form.email.id_for_label}}" >
+		<label for="floatingInput">Email address</label>
+	</div>
+	{% comment %} {% if registration_form.email.help_text %} {% endcomment %}
+	{% comment %} <small style="color: grey;">{{registration_form.email.help_text}}</small> {% endcomment %}
+	{% comment %} {% endif %} {% endcomment %}
+	<div class="form-floating py-2 ">
+		<input type="text" name="username" class="form-control" id="{{registration_form.username.id_for_label}}" >
+		<label for="floatingInput">Username</label>
+	</div>
+	</p>
+	<div class="form-floating py-2 ">
+		<input type="password" name="password1" class="form-control" id="{{registration_form.password1.id_for_label}}">
+	
+		<label for="floatingInput">Password</label>
+	</div>
+	{% comment %} {% if registration_form.password1.help_text %} {% endcomment %}
+	{% comment %} <small style="color: grey;">{{registration_form.password1.help_text}}</small> {% endcomment %}
+	{% comment %} {% endif %} {% endcomment %}
+
+	<div class="form-floating py-2 ">
+		<input type="password" name="password2" class="form-control" id="{{registration_form.password2.id_for_label}}">
+	
+		<label for="floatingInput">ConfirmPassword</label>
+	</div>
+
+	{% comment %} {% if registration_form.password2.help_text %} {% endcomment %}
+	{% comment %} <small style="color: grey;">{{registration_form.password2.help_text}}</small> {% endcomment %}
 	{% for field in registration_form %}
-		<p>
-			{{field.label_tag}}
-			{{field}}
-
-			{% if field.help_text %}
-				<small style="color: grey;">{{field.help_text}}</small>
-			{% endif %}
-
-			{% for error in field.errors %}
-				<p style="color: red;">{{error}}</p>
-			{% endfor %}
-		</p>
+	<p>
+		{% for error in field.errors %}
+		<p style="color: red;">{{error}}</p>
+		{% endfor %}
+	</p>
 	{% endfor %}
-	<button type="submit">Register</button>
+	{% comment %} {% endif %} {% endcomment %}
+
+    <button class="my-2 w-100 btn btn-lg btn-primary" type="submit">Register</button>
+
 	
 </form>
+</div>
 
 
 {% endblock content %}

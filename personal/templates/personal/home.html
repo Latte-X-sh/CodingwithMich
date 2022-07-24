@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-
+{% block title %} Home {% endblock %}
 {% block content %}
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
     <h1 class="display-4 fw-normal">CodingWithLatte</h1>
@@ -8,9 +8,9 @@
   </div>
 <div class="container">
     <div class="d-flex flex-column">
-   
+
         <h1>Registered Users</h1>
-        {# doig loops in django template #}
+        {# doing loops in django template #}
         <ul>
             {% for account in accounts %}
             <li>{% include "personal/snippets/body_snippets.html" with value=account %}</li>
