@@ -13,11 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
+from django.conf.urls.static import static
 from django.urls import path
 from django.contrib.auth import views as auth_views
 
-from account.views import registration_view, logout_view, login_view , account_view
+from account.views import (
+    registration_view, logout_view, login_view , account_view)
 from personal.views import home_screen_view
 
 
@@ -47,3 +50,7 @@ urlpatterns = [
      name='password_reset_complete'),
 ]
 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
